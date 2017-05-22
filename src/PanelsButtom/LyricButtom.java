@@ -5,8 +5,10 @@
  */
 package PanelsButtom;
 
+import Handler.SongHandler;
 import Model.Lyric;
 import java.awt.Dimension;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,15 +17,25 @@ import java.awt.Dimension;
 public class LyricButtom extends javax.swing.JPanel {
     
     private Lyric lyric;
+    private SongHandler songHandler;
 
     /**
      * Creates new form LyricButtom
      */
-    public LyricButtom(Lyric lyric) {
+    public LyricButtom(Lyric lyric) throws ClassNotFoundException, SQLException {
         this.lyric = lyric;
+        songHandler = SongHandler.getInstance();
         initComponents();
         setSize(new Dimension(202, 33));
         jToggleButton1.setText(lyric.getTitle());
+    }
+    
+    public void pushButtom(){
+        if (jToggleButton1.isSelected()) {
+            songHandler.addSongsToNewALbum(lyric);
+        }else{
+            songHandler.removeSongsFromNewAlbum(lyric);
+        }
     }
 
     /**
@@ -38,6 +50,11 @@ public class LyricButtom extends javax.swing.JPanel {
         jToggleButton1 = new javax.swing.JToggleButton();
 
         jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -50,6 +67,10 @@ public class LyricButtom extends javax.swing.JPanel {
             .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        pushButtom();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

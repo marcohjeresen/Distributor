@@ -5,6 +5,7 @@
  */
 package PanelsButtom;
 
+import Model.Lyric;
 import java.awt.Dimension;
 
 /**
@@ -12,11 +13,14 @@ import java.awt.Dimension;
  * @author markh
  */
 public class NewLyricButtom extends javax.swing.JPanel {
+    
+    private Lyric lyric;
 
     /**
      * Creates new form NewLyricButtom
      */
     public NewLyricButtom() {
+        
         initComponents();
         setSize(new Dimension(202, 33));
     }

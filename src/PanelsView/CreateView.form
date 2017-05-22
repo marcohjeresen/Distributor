@@ -20,13 +20,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel10" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="jComboBox4" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="jC_genre" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="jComboBox3" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="jC_artist" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="jC_Supl" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="jC_platetype" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
@@ -84,19 +84,19 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jC_platetype" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jC_Supl" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jC_artist" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jC_genre" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
@@ -144,7 +144,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField5">
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="jC_platetype">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -161,7 +161,7 @@
         <Property name="text" type="java.lang.String" value="Supplier"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="jC_Supl">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -173,7 +173,7 @@
         <Property name="text" type="java.lang.String" value="Artist"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
+    <Component class="javax.swing.JComboBox" name="jC_artist">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -185,7 +185,7 @@
         <Property name="text" type="java.lang.String" value="Genre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox4">
+    <Component class="javax.swing.JComboBox" name="jC_genre">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
