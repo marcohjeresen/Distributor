@@ -6,6 +6,7 @@
 package Handler;
 
 import Control.SongControl;
+import Model.Album;
 import Model.Artist;
 import Model.Genre;
 import Model.Lyric;
@@ -23,10 +24,18 @@ public class SongHandler {
     private static SongHandler lyricsong;
     private SongControl songControl;
     private ArrayList<Lyric> addedLyric;
+    private Artist selectedArtist;
+    private PlateType selectedPlatetype;
+    private Genre selectedGenre;
+    private Supplier selectedSupl;
 
     private SongHandler() throws ClassNotFoundException, SQLException {
         songControl = SongControl.getInstance();
         addedLyric = new ArrayList<>();
+        selectedArtist = null;
+        selectedPlatetype = null;
+        selectedGenre = null;
+        selectedSupl = null;
     }
 
     public static SongHandler getInstance() throws ClassNotFoundException, SQLException {
@@ -58,7 +67,6 @@ public class SongHandler {
     
     public void addSongsToNewALbum(Lyric lyric){
         addedLyric.add(lyric);
-        System.out.println("Added");
     }
     
     public void removeSongsFromNewAlbum(Lyric lyric){
@@ -67,11 +75,35 @@ public class SongHandler {
                 addedLyric.remove(i);
             }
         }
-        System.out.println("Remove");
     }
     
-    public ArrayList<Lyric> getSongsToNewAlbum(){
+    
+     public ArrayList<Lyric> getSongsToNewAlbum(){
         return addedLyric;
+    }   
+     
+    public void setSelectedArtist(Artist artist){
+        selectedArtist = artist;
     }
+    
+    public void setSelectedGenre(Genre genre){
+        selectedGenre = genre;
+    }
+    
+    public void setSelectedPlateType(PlateType plateType){
+        selectedPlatetype = plateType;
+    }
+    
+    public void setSelectedSupl(Supplier supplier){
+        selectedSupl = supplier;
+    }
+    
+    public void createNewAlbum(String title, String pict, int stock, int suppPrice, int salePrice){
+        Album a = new Album(0, title, pict, stock, suppPrice, salePrice, addedLyric.size(), selectedPlatetype, selectedSupl, selectedArtist, selectedGenre);
+    }
+    
+
+    
+
 
 }
