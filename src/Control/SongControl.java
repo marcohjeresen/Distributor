@@ -7,6 +7,7 @@ package Control;
 
 import Database.Database;
 import Model.Lyric;
+import Model.Supplier;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,6 +48,20 @@ public class SongControl {
             Logger.getLogger(SongControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lyricList;
+    }
+    
+    public ArrayList<Supplier> getAllSupplier(){
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+        try{
+            ResultSet rs = database.query("call getallsupplier();");
+            while (rs.next()){
+                Supplier s = new Supplier(rs.getInt("su_cvrnumber"), rs.getString("su_name"), rs.getString("su_street"), rs.getInt("su_tlf"), rs.getString("su_mail"));
+                suppliers.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SongControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return suppliers;
     }
     
     

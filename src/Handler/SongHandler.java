@@ -7,6 +7,7 @@ package Handler;
 
 import Control.SongControl;
 import Model.Lyric;
+import Model.Supplier;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,22 +17,26 @@ import java.util.ArrayList;
  */
 public class SongHandler {
     
-    private static SongHandler lyricHandler;
-    private SongControl lyricControl;
+    private static SongHandler lyricsong;
+    private SongControl songControl;
 
     private SongHandler() throws ClassNotFoundException, SQLException {
-        lyricControl = SongControl.getInstance();
+        songControl = SongControl.getInstance();
     }
     
     public static SongHandler getInstance() throws ClassNotFoundException, SQLException{
-        if (lyricHandler == null) {
-            lyricHandler = new SongHandler();
+        if (lyricsong == null) {
+            lyricsong = new SongHandler();
         }
-        return lyricHandler;
+        return lyricsong;
     }
     
     public ArrayList<Lyric> getAllLyric(){
-        return lyricControl.getAllLyric();
+        return songControl.getAllLyric();
+    }
+    
+    public ArrayList<Supplier> getAllSupplier(){
+        return songControl.getAllSupplier();
     }
     
     
