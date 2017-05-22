@@ -56,7 +56,6 @@ public class AlbumControl {
                 Artist artist = new Artist(rs.getInt("ar_id"), rs.getString("ar_name"));
                 Genre genre = new Genre(rs.getInt("ge_id"), rs.getString("ge_type"));
                 album = new Album(rs.getInt("al_id"), rs.getString("al_title"), rs.getString("al_picturepath"), rs.getInt("al_stock"), rs.getInt("al_suppprice"), rs.getInt("al_saleprice"), rs.getInt("al_songamount"), plateType, supplier, artist, genre);
-                
             }
         } catch (SQLException ex) {
             Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);

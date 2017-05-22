@@ -74,7 +74,6 @@ public class SingelOrderView extends javax.swing.JPanel {
         for (AlbumToOrder ato : orderLine.getAlbumList()) {
             if (ato.getAmount() > ato.getAlbum().getStock()) {
                 isIndStock = false;
-                System.out.println(""+isIndStock);
             }
         }
         setButtom();
