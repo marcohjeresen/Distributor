@@ -6,6 +6,7 @@
 package PanelsView;
 
 import Control.OrderControl;
+import Handler.OrderHandler;
 import Model.OrderLine;
 import PanelsButtom.OrderLineButtom;
 import java.awt.Dimension;
@@ -18,13 +19,13 @@ import java.util.ArrayList;
  */
 public class OrderView extends javax.swing.JPanel {
     
-    private OrderControl orderControl;
+    private OrderHandler orderHandler;
 
     /**
      * Creates new form OrderView
      */
     public OrderView() throws ClassNotFoundException, SQLException {
-        orderControl = OrderControl.getInstance();
+        orderHandler = OrderHandler.getInstance();
         initComponents();
         setSize(new Dimension(685, 506));
         showActiveOrders();
@@ -32,7 +33,7 @@ public class OrderView extends javax.swing.JPanel {
     
     public void showActiveOrders(){
         OrderLineButtom olb;
-        ArrayList<OrderLine> orderLineList = orderControl.getActiveOrders();
+        ArrayList<OrderLine> orderLineList = orderHandler.getActiveOrders();
         jP_activeOrder.removeAll();
         for (int i = 0; i < orderLineList.size(); i++) {
             olb = new OrderLineButtom(orderLineList.get(i));
