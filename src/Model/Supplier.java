@@ -12,15 +12,14 @@ package Model;
 public class Supplier {
     private int cvrNumber;
     private String name;
-    private String storeChain;
     private String street;
     private int phoneNumber;
     private String email;
 
-    public Supplier(int cvrNumber, String name, String storeChain, String street, int phoneNumber, String email) {
+    public Supplier(int cvrNumber, String name, String street, int phoneNumber, String email) {
         this.cvrNumber = cvrNumber;
         this.name = name;
-        this.storeChain = storeChain;
+
         this.street = street;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -40,14 +39,6 @@ public class Supplier {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getStoreChain() {
-        return storeChain;
-    }
-
-    public void setStoreChain(String storeChain) {
-        this.storeChain = storeChain;
     }
 
     public String getStreet() {

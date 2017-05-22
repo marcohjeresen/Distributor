@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -17,12 +18,16 @@ public class OrderLine {
     private Date date;
     private Customers customers;
     private int totalPrice;
+    private boolean orderEnd;
+    private ArrayList<AlbumToOrder> albumToOrdersList;
 
-    public OrderLine(int id, Date date, Customers customers, int totalPrice) {
+    public OrderLine(int id, Date date, Customers customers, int totalPrice, boolean orderEnd) {
         this.id = id;
         this.date = date;
         this.customers = customers;
         this.totalPrice = totalPrice;
+        this.orderEnd = orderEnd;
+        albumToOrdersList = new ArrayList<>();
     }
 
     public int getId() {
@@ -55,6 +60,30 @@ public class OrderLine {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public boolean isOrderEnd() {
+        return orderEnd;
+    }
+
+    public void setOrderEnd(boolean orderEnd) {
+        this.orderEnd = orderEnd;
+    }
+
+    public ArrayList<AlbumToOrder> getAlbumList() {
+        return albumToOrdersList;
+    }
+
+    public void setAlbumList(ArrayList<AlbumToOrder> albumList) {
+        this.albumToOrdersList = albumList;
+    }
+    
+    public int getAlbumAmount(){
+        int amount = 0;
+        for (AlbumToOrder albumList1 : albumToOrdersList) {
+            amount = amount + albumList1.getAmount();
+        }
+        return amount;
     }
     
     
