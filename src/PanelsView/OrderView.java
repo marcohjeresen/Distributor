@@ -9,29 +9,37 @@ import Control.OrderControl;
 import Handler.OrderHandler;
 import Model.OrderLine;
 import PanelsButtom.OrderLineButtom;
+import UtilityStuff.Listeners;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author markh
  */
-public class OrderView extends javax.swing.JPanel {
-    
+public class OrderView extends javax.swing.JPanel implements ActionListener {
+
     private OrderHandler orderHandler;
+    private Listeners listeners;
 
     /**
      * Creates new form OrderView
      */
     public OrderView() throws ClassNotFoundException, SQLException {
         orderHandler = OrderHandler.getInstance();
+        listeners = Listeners.getList();
         initComponents();
         setSize(new Dimension(685, 506));
+        listeners.addListener(this);
         showActiveOrders();
     }
-    
-    public void showActiveOrders() throws ClassNotFoundException, SQLException{
+
+    public void showActiveOrders() throws ClassNotFoundException, SQLException {
         OrderLineButtom olb;
         ArrayList<OrderLine> orderLineList = orderHandler.getActiveOrders();
         jP_activeOrder.removeAll();
@@ -91,4 +99,18 @@ public class OrderView extends javax.swing.JPanel {
     private javax.swing.JPanel jP_activeOrder;
     private javax.swing.JScrollPane jScroll_ActiveOrders;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        switch (ae.getActionCommand()) {
+            case "Order Accept": {
+                try {
+                    showActiveOrders();
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(OrderView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+        }
+    }
 }

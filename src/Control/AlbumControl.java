@@ -62,7 +62,14 @@ public class AlbumControl {
             Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return album;
-
+    }
+    
+    public void updateStock(Album album, int amount){
+        try{
+            database.change("call updatestock("+album.getId()+","+amount+")");
+        }catch (SQLException ex){
+            Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

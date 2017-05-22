@@ -5,11 +5,16 @@
  */
 package PanelsView;
 
+import Handler.AlbumHandler;
+import Handler.OrderHandler;
+import Model.Album;
 import Model.AlbumToOrder;
 import Model.OrderLine;
 import PanelsButtom.OrderContentsButtom;
 import PanelsButtom.OrderLineButtom;
 import java.awt.Dimension;
+import java.sql.SQLException;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,18 +23,27 @@ import java.awt.Dimension;
 public class SingelOrderView extends javax.swing.JPanel {
     
     private OrderLine orderLine;
+    private AlbumHandler albumHandler;
+    private OrderHandler orderHandler;
+    private JFrame jFrame;
+    private boolean isIndStock;
 
     
 
     /**
      * Creates new form SingelOrder
      */
-    public SingelOrderView(OrderLine orderLine) {
+    public SingelOrderView(OrderLine orderLine, JFrame jf) throws ClassNotFoundException, SQLException {
         this.orderLine = orderLine;
+        this.jFrame = jf;
+        isIndStock = true;
+        albumHandler = AlbumHandler.getInstance();
+        orderHandler = OrderHandler.getInstance();
         initComponents();
-        setSize(new Dimension(705, 280));
+        setSize(new Dimension(705, 342));
         setCustomer();
         setOrderContents();
+        checkStock();
     }
     
     public void setCustomer(){
@@ -55,6 +69,28 @@ public class SingelOrderView extends javax.swing.JPanel {
         jP_orderContent.revalidate();
         jP_orderContent.repaint();
     }
+    
+    public void checkStock(){
+        for (AlbumToOrder ato : orderLine.getAlbumList()) {
+            if (ato.getAmount() > ato.getAlbum().getStock()) {
+                isIndStock = false;
+                System.out.println(""+isIndStock);
+            }
+        }
+        setButtom();
+    }
+    
+    public void setButtom(){
+        jB_OrderAccept.setEnabled(isIndStock);
+    }
+    
+    public void updateStock(){
+        for (AlbumToOrder al : orderLine.getAlbumList()) {
+             albumHandler.updateStock(al.getAlbum(), -al.getAmount());
+        }
+        orderHandler.orderAcceptet(orderLine.getId());
+        jFrame.dispose();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,6 +111,7 @@ public class SingelOrderView extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jP_orderContent = new javax.swing.JPanel();
+        jB_OrderAccept = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -133,7 +170,7 @@ public class SingelOrderView extends javax.swing.JPanel {
         );
         jP_orderContentLayout.setVerticalGroup(
             jP_orderContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
+            .addGap(0, 317, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jP_orderContent);
@@ -142,12 +179,19 @@ public class SingelOrderView extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
         );
+
+        jB_OrderAccept.setText("Accept Order");
+        jB_OrderAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_OrderAcceptActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,17 +200,30 @@ public class SingelOrderView extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jB_OrderAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jB_OrderAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jB_OrderAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_OrderAcceptActionPerformed
+        updateStock();
+    }//GEN-LAST:event_jB_OrderAcceptActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jB_OrderAccept;
     private javax.swing.JLabel jL_Adress;
     private javax.swing.JLabel jL_Cvr;
     private javax.swing.JLabel jL_Email;

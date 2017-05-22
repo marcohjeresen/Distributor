@@ -22,8 +22,8 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  *
  * @author markh
  */
-public class Mainview extends javax.swing.JFrame implements ActionListener{
-    
+public class Mainview extends javax.swing.JFrame implements ActionListener {
+
     private OrderView orderView;
     private Listeners listeners;
     private OrderHandler orderHandler;
@@ -49,18 +49,18 @@ public class Mainview extends javax.swing.JFrame implements ActionListener{
         jp_show.add(orderView);
         orderView.setLocation((this.getWidth() - orderView.getWidth()) / 2, (this.getHeight() - orderView.getHeight() - 50) / 2);
     }
-    
-    public void showOrder(){
+
+    public void showOrder() throws ClassNotFoundException, SQLException {
         JFrame jf = new JFrame("Tilføj Ret");
-        SingelOrderView so = new SingelOrderView(orderHandler.getChoosenOrder());
+        SingelOrderView so = new SingelOrderView(orderHandler.getChoosenOrder(), jf);
         jf.add(so);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         so.setVisible(true);
         jf.setVisible(true);
-        jf.setSize(715, 335);
-        
-        int højde = ((this.getHeight()-jf.getHeight())/2);
-        int brede = ((this.getWidth()-jf.getWidth())/2);
+        jf.setSize(715, 372);
+
+        int højde = ((this.getHeight() - jf.getHeight()) / 2);
+        int brede = ((this.getWidth() - jf.getWidth()) / 2);
         jf.setLocation(brede, højde);
     }
 
@@ -170,9 +170,14 @@ public class Mainview extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         switch (ae.getActionCommand()) {
-            case "Order Selected":
-                showOrder();
-                break;
+            case "Order Selected": {
+                try {
+                    showOrder();
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(Mainview.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
 
         }
     }

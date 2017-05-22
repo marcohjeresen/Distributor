@@ -50,7 +50,7 @@ public class Database {
         return stmt.executeQuery(sql);
     }
 
-    public int ændre(String sql) throws SQLException {
+    public int change(String sql) throws SQLException {
         stmt = conn.createStatement();
         stmt.execute(sql);
         return 0;

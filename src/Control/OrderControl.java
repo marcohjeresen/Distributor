@@ -79,5 +79,13 @@ public class OrderControl {
         }
         return albumToOrdersList;
     }
+    
+    public void acceptOrder(int orderid){
+        try{
+            database.change("call acceptorder("+orderid+")");
+        }catch (SQLException ex){
+            Logger.getLogger(CustomerControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

@@ -51,6 +51,11 @@ public class OrderHandler {
         return choosenOrderLine;
     }
     
+    public void orderAcceptet(int orderid){
+        orderControl.acceptOrder(orderid);
+        listeners.notifyListeners("Order Accept");
+    }
+    
     
     
 }
