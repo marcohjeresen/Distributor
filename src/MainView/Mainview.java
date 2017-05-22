@@ -57,7 +57,7 @@ public class Mainview extends javax.swing.JFrame implements ActionListener {
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         so.setVisible(true);
         jf.setVisible(true);
-        jf.setSize(715, 372);
+        jf.setSize(860, 372);
 
         int højde = ((this.getHeight() - jf.getHeight()) / 2);
         int brede = ((this.getWidth() - jf.getWidth()) / 2);

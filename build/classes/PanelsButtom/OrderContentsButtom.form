@@ -18,6 +18,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jL_Title" min="-2" pref="180" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jL_type" pref="79" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jL_Amount" min="-2" pref="94" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -31,6 +33,7 @@
               <Component id="jL_Title" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jL_Amount" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jL_Price" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jL_type" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,6 +50,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jL_Price">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jL_type">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>

@@ -23,10 +23,11 @@ public class OrderContentsButtom extends javax.swing.JPanel {
     public OrderContentsButtom(AlbumToOrder albumToOrder) {
         this.albumToOrder = albumToOrder;
         initComponents();
-        setSize(new Dimension(388, 30));
+        setSize(new Dimension(473, 30));
         jL_Title.setText("Title: "+albumToOrder.getAlbum().getTitle());
         jL_Amount.setText("Amount: "+albumToOrder.getAmount());
         jL_Price.setText("Price: "+ albumToOrder.getPrice());
+        jL_type.setText("Type: "+albumToOrder.getAlbum().getPlateType().getType());
         checkStock();
     }
     
@@ -50,6 +51,7 @@ public class OrderContentsButtom extends javax.swing.JPanel {
         jL_Title = new javax.swing.JLabel();
         jL_Amount = new javax.swing.JLabel();
         jL_Price = new javax.swing.JLabel();
+        jL_type = new javax.swing.JLabel();
 
         jL_Title.setText("jLabel1");
 
@@ -57,12 +59,16 @@ public class OrderContentsButtom extends javax.swing.JPanel {
 
         jL_Price.setText("jLabel1");
 
+        jL_type.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jL_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jL_type, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jL_Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -73,7 +79,8 @@ public class OrderContentsButtom extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jL_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jL_Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jL_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jL_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jL_type, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -82,5 +89,6 @@ public class OrderContentsButtom extends javax.swing.JPanel {
     private javax.swing.JLabel jL_Amount;
     private javax.swing.JLabel jL_Price;
     private javax.swing.JLabel jL_Title;
+    private javax.swing.JLabel jL_type;
     // End of variables declaration//GEN-END:variables
 }

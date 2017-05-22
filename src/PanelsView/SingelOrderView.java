@@ -40,7 +40,7 @@ public class SingelOrderView extends javax.swing.JPanel {
         albumHandler = AlbumHandler.getInstance();
         orderHandler = OrderHandler.getInstance();
         initComponents();
-        setSize(new Dimension(705, 342));
+        setSize(new Dimension(851, 342));
         setCustomer();
         setOrderContents();
         checkStock();
@@ -166,7 +166,7 @@ public class SingelOrderView extends javax.swing.JPanel {
         jP_orderContent.setLayout(jP_orderContentLayout);
         jP_orderContentLayout.setHorizontalGroup(
             jP_orderContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 401, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
         jP_orderContentLayout.setVerticalGroup(
             jP_orderContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,11 +179,11 @@ public class SingelOrderView extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jB_OrderAccept.setText("Accept Order");
@@ -212,7 +212,7 @@ public class SingelOrderView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jB_OrderAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jB_OrderAccept, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
