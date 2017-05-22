@@ -31,7 +31,7 @@ public class OrderView extends javax.swing.JPanel {
         showActiveOrders();
     }
     
-    public void showActiveOrders(){
+    public void showActiveOrders() throws ClassNotFoundException, SQLException{
         OrderLineButtom olb;
         ArrayList<OrderLine> orderLineList = orderHandler.getActiveOrders();
         jP_activeOrder.removeAll();

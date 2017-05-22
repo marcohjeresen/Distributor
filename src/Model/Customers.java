@@ -13,6 +13,7 @@ public class Customers {
     
     private int cvrNumber;
     private String name;
+    private String storeChain;
     private String street;
     private int phoneNumber;
     private String email;
@@ -20,6 +21,7 @@ public class Customers {
     public Customers(int cvrNumber, String name, String storeChain, String street, int phoneNumber, String email) {
         this.cvrNumber = cvrNumber;
         this.name = name;
+        this.storeChain = storeChain;
         this.street = street;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -63,6 +65,14 @@ public class Customers {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getStoreChain() {
+        return storeChain;
+    }
+
+    public void setStoreChain(String storeChain) {
+        this.storeChain = storeChain;
     }
     
     

@@ -5,8 +5,10 @@
  */
 package PanelsButtom;
 
+import Handler.OrderHandler;
 import Model.OrderLine;
 import java.awt.Dimension;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,17 +17,23 @@ import java.awt.Dimension;
 public class OrderLineButtom extends javax.swing.JPanel {
     
     private OrderLine orderLine;
+    private OrderHandler orderHandler;
 
     /**
      * Creates new form OrderLine
      */
-    public OrderLineButtom(OrderLine orderLine) {
+    public OrderLineButtom(OrderLine orderLine) throws ClassNotFoundException, SQLException {
         this.orderLine = orderLine;
+        orderHandler = OrderHandler.getInstance();
         initComponents();
         setSize(new Dimension(526, 30));
         jL_Date.setText("Date: "+orderLine.getDate());
         jL_StoreChain.setText("Store: "+orderLine.getCustomers().getName());
         jL_AlbumAmount.setText("Amount: "+orderLine.getAlbumAmount());
+    }
+    
+    public void selectOrder(){
+        orderHandler.setChoosenOrderline(orderLine);
     }
 
     /**
@@ -49,6 +57,11 @@ public class OrderLineButtom extends javax.swing.JPanel {
         jL_AlbumAmount.setText("jLabel1");
 
         jB_ShowOrder.setText("Show");
+        jB_ShowOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_ShowOrderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,6 +85,10 @@ public class OrderLineButtom extends javax.swing.JPanel {
             .addComponent(jB_ShowOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_ShowOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ShowOrderActionPerformed
+        selectOrder();
+    }//GEN-LAST:event_jB_ShowOrderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

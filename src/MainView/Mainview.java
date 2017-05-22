@@ -5,33 +5,63 @@
  */
 package MainView;
 
+import Handler.OrderHandler;
 import PanelsView.OrderView;
+import PanelsView.SingelOrderView;
+import UtilityStuff.Listeners;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
  * @author markh
  */
-public class Mainview extends javax.swing.JFrame {
+public class Mainview extends javax.swing.JFrame implements ActionListener{
     
     private OrderView orderView;
+    private Listeners listeners;
+    private OrderHandler orderHandler;
 
     /**
      * Creates new form Mainview
      */
     public Mainview() {
+        listeners = Listeners.getList();
+        try {
+            orderHandler = OrderHandler.getInstance();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Mainview.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         try {
             orderView = new OrderView();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Mainview.class.getName()).log(Level.SEVERE, null, ex);
         }
+        listeners.addListener(this);
         setSize(new Dimension(1400, 800));
         jp_show.add(orderView);
         orderView.setLocation((this.getWidth() - orderView.getWidth()) / 2, (this.getHeight() - orderView.getHeight() - 50) / 2);
+    }
+    
+    public void showOrder(){
+        JFrame jf = new JFrame("Tilføj Ret");
+        SingelOrderView so = new SingelOrderView(orderHandler.getChoosenOrder());
+        jf.add(so);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        so.setVisible(true);
+        jf.setVisible(true);
+        jf.setSize(715, 335);
+        
+        int højde = ((this.getHeight()-jf.getHeight())/2);
+        int brede = ((this.getWidth()-jf.getWidth())/2);
+        jf.setLocation(brede, højde);
     }
 
     /**
@@ -136,4 +166,14 @@ public class Mainview extends javax.swing.JFrame {
     private javax.swing.JPanel jP_viewCont;
     private javax.swing.JPanel jp_show;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        switch (ae.getActionCommand()) {
+            case "Order Selected":
+                showOrder();
+                break;
+
+        }
+    }
 }

@@ -45,8 +45,6 @@ public class AlbumControl {
     }
     
 
-    
-
     public Album getAlbum(int albumid) {
         Album album = null;
 
