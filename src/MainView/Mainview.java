@@ -126,7 +126,7 @@ public class Mainview extends javax.swing.JFrame implements ActionListener {
         );
         jp_showLayout.setVerticalGroup(
             jp_showLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 736, Short.MAX_VALUE)
         );
 
         jP_viewCont.add(jp_show, "card2");
@@ -151,7 +151,7 @@ public class Mainview extends javax.swing.JFrame implements ActionListener {
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jP_viewCont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jP_viewCont, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
         );
 
         pack();
@@ -218,7 +218,11 @@ public class Mainview extends javax.swing.JFrame implements ActionListener {
                 }
             }
             break;
-
+            case "New Album": {
+                showCreateSite();
+            }
+            break;
         }
     }
 }
+

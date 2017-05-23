@@ -11,6 +11,7 @@ import Model.AlbumToOrder;
 import Model.Artist;
 import Model.Customers;
 import Model.Genre;
+import Model.Lyric;
 import Model.OrderLine;
 import Model.PlateType;
 import Model.Supplier;
@@ -76,11 +77,20 @@ public class AlbumControl {
     
     public void createNewAlbum(Album a){
         try{
-            ResultSet rs = database.query("call createnewalbum("+a.getTitle()+","+a.getPicturePath()+","+a.getStock()+","+a.getSupplierPrice()+","+a.getSalePrice()+","+a.getSongNumbers()+","+a.getPlateType().getId()+","+a.getSupplier().getCvrNumber()+","+a.getArtist().getId()+","+a.getGenre().getId()+")");
+            ResultSet rs = database.query("call createnewalbum('"+a.getTitle()+"','"+a.getPicturePath()+"',"+a.getStock()+","+a.getSupplierPrice()+","+a.getSalePrice()+","+a.getSongNumbers()+","+a.getPlateType().getId()+","+a.getSupplier().getCvrNumber()+","+a.getArtist().getId()+","+a.getGenre().getId()+")");
             while (rs.next()){
                 currentId = rs.getInt("nextid");
             }
         } catch (SQLException ex) {
+            Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public void createSongToNewAlbum(Lyric lyric){
+        try{
+            database.change("call addsongtoalbum("+currentId+","+lyric.getId()+");");
+        }catch (SQLException ex){
             Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

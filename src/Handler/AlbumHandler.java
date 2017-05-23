@@ -7,6 +7,7 @@ package Handler;
 
 import Control.AlbumControl;
 import Model.Album;
+import Model.Lyric;
 import Model.OrderLine;
 import UtilityStuff.Listeners;
 import java.sql.SQLException;
@@ -40,12 +41,15 @@ public class AlbumHandler {
 
     public void updateStock(Album album, int amount) {
         albumControl.updateStock(album, amount);
-
     }
 
     public void createNewAlbum(Album album) {
-        
-       
+        albumControl.createNewAlbum(album);
+    }
+    
+    public void addSongToAlbum(Lyric lyric){
+        albumControl.createSongToNewAlbum(lyric);
+        listeners.notifyListeners("New Album");
     }
 
 }

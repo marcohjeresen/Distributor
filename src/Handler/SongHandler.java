@@ -105,6 +105,12 @@ public class SongHandler {
         albumHandler.createNewAlbum(a);
     }
     
+    public void addSongToAlbumDB(){
+        for (Lyric addedLyric1 : addedLyric) {
+            albumHandler.addSongToAlbum(addedLyric1);
+        }
+    }
+    
 
     
 

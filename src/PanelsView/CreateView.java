@@ -31,7 +31,7 @@ public class CreateView extends javax.swing.JPanel {
     public CreateView() throws ClassNotFoundException, SQLException {
         songHandler = SongHandler.getInstance();
         initComponents();
-        setSize(new Dimension(500, 600));
+        setSize(new Dimension(500, 625));
         fillSongs();
         fillSupplierCombo();
         fillArtistCombo();
@@ -93,6 +93,7 @@ public class CreateView extends javax.swing.JPanel {
     
     public void createNewALbum(){
         songHandler.createNewAlbum(jT_title.getText(), jT_pict.getText(), Integer.parseInt(jT_Stock.getText()), Integer.parseInt(jT_suppprice.getText()), Integer.parseInt(jT_saleprice.getText()));
+        songHandler.addSongToAlbumDB();
     }
 
     /**
