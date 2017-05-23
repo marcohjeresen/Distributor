@@ -23,6 +23,7 @@ public class SongHandler {
 
     private static SongHandler lyricsong;
     private SongControl songControl;
+    private AlbumHandler albumHandler;
     private ArrayList<Lyric> addedLyric;
     private Artist selectedArtist;
     private PlateType selectedPlatetype;
@@ -31,6 +32,7 @@ public class SongHandler {
 
     private SongHandler() throws ClassNotFoundException, SQLException {
         songControl = SongControl.getInstance();
+        albumHandler = AlbumHandler.getInstance();
         addedLyric = new ArrayList<>();
         selectedArtist = null;
         selectedPlatetype = null;
@@ -100,6 +102,7 @@ public class SongHandler {
     
     public void createNewAlbum(String title, String pict, int stock, int suppPrice, int salePrice){
         Album a = new Album(0, title, pict, stock, suppPrice, salePrice, addedLyric.size(), selectedPlatetype, selectedSupl, selectedArtist, selectedGenre);
+        albumHandler.createNewAlbum(a);
     }
     
 

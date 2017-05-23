@@ -6,6 +6,7 @@
 package Control;
 
 import Database.Database;
+import Model.Album;
 import Model.Artist;
 import Model.Genre;
 import Model.Lyric;
@@ -107,5 +108,7 @@ public class SongControl {
         }
         return plateTypeListy;
     }
+    
+
 
 }

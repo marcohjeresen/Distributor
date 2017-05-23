@@ -30,10 +30,12 @@ public class AlbumControl {
     private static AlbumControl albumControl;
     private Database database;
     private Listeners listeners;
+    private int currentId;
 
     private AlbumControl() throws ClassNotFoundException, SQLException {
         database = new Database();
         listeners = Listeners.getList();
+        currentId = 0;
 
     }
 
@@ -67,6 +69,18 @@ public class AlbumControl {
         try{
             database.change("call updatestock("+album.getId()+","+amount+")");
         }catch (SQLException ex){
+            Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public void createNewAlbum(Album a){
+        try{
+            ResultSet rs = database.query("call createnewalbum("+a.getTitle()+","+a.getPicturePath()+","+a.getStock()+","+a.getSupplierPrice()+","+a.getSalePrice()+","+a.getSongNumbers()+","+a.getPlateType().getId()+","+a.getSupplier().getCvrNumber()+","+a.getArtist().getId()+","+a.getGenre().getId()+")");
+            while (rs.next()){
+                currentId = rs.getInt("nextid");
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(AlbumControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

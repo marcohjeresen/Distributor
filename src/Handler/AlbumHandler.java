@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author markh
  */
 public class AlbumHandler {
-    
+
     private static AlbumHandler albumHandler;
     private AlbumControl albumControl;
     private Listeners listeners;
@@ -26,22 +26,26 @@ public class AlbumHandler {
         albumControl = AlbumControl.getInstance();
         listeners = Listeners.getList();
     }
-    
-    public static AlbumHandler getInstance() throws ClassNotFoundException, SQLException{
+
+    public static AlbumHandler getInstance() throws ClassNotFoundException, SQLException {
         if (albumHandler == null) {
             albumHandler = new AlbumHandler();
         }
         return albumHandler;
     }
-    
-    
-    public Album getAlbum(int albumid){
+
+    public Album getAlbum(int albumid) {
         return albumControl.getAlbum(albumid);
     }
-    
-    public void updateStock(Album album, int amount){
+
+    public void updateStock(Album album, int amount) {
         albumControl.updateStock(album, amount);
-        
+
     }
-    
+
+    public void createNewAlbum(Album album) {
+        
+       
+    }
+
 }
