@@ -11,11 +11,13 @@ import Model.AlbumToOrder;
 import Model.Customers;
 import Model.OrderLine;
 import UtilityStuff.Listeners;
+import UtilityStuff.SendMail;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.MessagingException;
 
 /**
  *
@@ -80,11 +82,14 @@ public class OrderControl {
         return albumToOrdersList;
     }
     
-    public void acceptOrder(int orderid){
+    public void acceptOrder(int orderid, String email){
         try{
             database.change("call acceptorder("+orderid+")");
+            SendMail mail = new SendMail(email,"prøve");
         }catch (SQLException ex){
             Logger.getLogger(CustomerControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(OrderControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

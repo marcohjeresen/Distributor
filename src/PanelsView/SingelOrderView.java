@@ -14,6 +14,8 @@ import PanelsButtom.OrderContentsButtom;
 import PanelsButtom.OrderLineButtom;
 import java.awt.Dimension;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -87,7 +89,11 @@ public class SingelOrderView extends javax.swing.JPanel {
         for (AlbumToOrder al : orderLine.getAlbumList()) {
              albumHandler.updateStock(al.getAlbum(), -al.getAmount());
         }
-        orderHandler.orderAcceptet(orderLine.getId());
+        try{
+            orderHandler.orderAcceptet(orderLine.getId(), orderLine.getCustomers().getEmail());
+        }catch (Exception e){
+            Logger.getLogger(SingelOrderView.class.getName()).log(Level.SEVERE, null, e);
+        }
         jFrame.dispose();
     }
 

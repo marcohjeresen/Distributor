@@ -10,6 +10,8 @@ import Model.OrderLine;
 import UtilityStuff.Listeners;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -51,9 +53,14 @@ public class OrderHandler {
         return choosenOrderLine;
     }
     
-    public void orderAcceptet(int orderid){
-        orderControl.acceptOrder(orderid);
-        listeners.notifyListeners("Order Accept");
+    public void orderAcceptet(int orderid, String email){
+        try{
+            orderControl.acceptOrder(orderid, email);
+            listeners.notifyListeners("Order Accept");
+        }catch (Exception e){
+            Logger.getLogger(OrderHandler.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
     }
     
     
