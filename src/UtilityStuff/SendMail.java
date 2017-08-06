@@ -31,8 +31,8 @@ public class SendMail {
     public SendMail(String toEmail, String PdfName) throws MessagingException {
         String fs = FileSystems.getDefault().getSeparator();
         String host = "smtp.gmail.com";
-        String Password = "hjzeecoMh1990";
-        String from = "markhjeresen@gmail.com";
+        String Password = "andreasogmarkskole";
+        String from = "Andreasogmark@gmail.com";
         String toAddress = toEmail;
         String filename = "." +fs+ "mailfolder" +fs+ ""+PdfName+".pdf";
         // Get system properties

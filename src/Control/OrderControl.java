@@ -85,7 +85,7 @@ public class OrderControl {
     public void acceptOrder(int orderid, String email){
         try{
             database.change("call acceptorder("+orderid+")");
-            SendMail mail = new SendMail(email,"prøve");
+            SendMail mail = new SendMail(email,"order is Acceptet");
         }catch (SQLException ex){
             Logger.getLogger(CustomerControl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MessagingException ex) {
